@@ -19,7 +19,7 @@
         },
         //更新してもデータが保持されるように編集
         mounted: function() {
-            this.todos =JSON.parse(localStorage.getItem('todos')) || [];
+            this.todos = JSON.parse(localStorage.getItem('todos')) || [];
         },
         
         methods: {
