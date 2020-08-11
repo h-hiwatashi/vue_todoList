@@ -7,14 +7,19 @@
     </head>
     <body>
         <div id="app" class="container">
-            <h1>My Todos</h1>
-            <ul>
+            <h1>My Todos
+                <span class="info">{{ countedTask }}/{{ todos.length }}</span>
+            </h1>
+            <ul v-if="todos.length">
                 <li v-for="(todo, index) in todos">
                     <input type="checkbox" v-model="todo.isDone">
                     <!-- <span v-bind:class="{done: todo.isDone}">{{ todo.title }}</span>-->
                     <span :class="{done: todo.isDone}">{{ todo.title }}</span>
                     <span @click="deleteItem(index)" class="command">[x]</span>
                 </li>
+            </ul>
+            <ul v-else>
+                <li>todoがありません！</li>
             </ul>
             <form v-on:submit.prevent="addItem">
                 <input type="text" v-model="newItem">

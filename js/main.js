@@ -30,6 +30,15 @@
                 if (confirm('削除してよろしいですか？'))
                 this.todos.splice(index, 1);
             }
+        },
+        //タスクのカウント
+        computed: {
+            countedTask: function() {
+                var items = this.todos.filter(function(todo) {
+                        return !todo.isDone;
+                });
+                return items.length;
+            }
         }
     });
 })();
