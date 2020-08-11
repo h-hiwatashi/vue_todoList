@@ -7,8 +7,10 @@
     </head>
     <body>
         <div id="app" class="container">
-            <h1>My Todos
-                <span class="info">{{ countedTask }}/{{ todos.length }}</span>
+            <h1>
+                <button @click="purge">完了済削除</button>
+                My Todos
+                <span class="info">{{ countedTask.length }}/{{ todos.length }}</span>
             </h1>
             <ul v-if="todos.length">
                 <li v-for="(todo, index) in todos">

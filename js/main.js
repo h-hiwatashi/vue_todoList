@@ -17,6 +17,15 @@
                 isDone: true
             }]
         },
+        watch: {
+            todos: {
+                handler: function() {
+                    localStorage.setItem('todos', JSON.stringify(this.todos));
+                    //alert('保存されました！');
+                },
+                deep: true
+            }
+        },
         methods: {
             addItem: function() {
                 var item ={
@@ -29,15 +38,20 @@
             deleteItem: function(index) {
                 if (confirm('削除してよろしいですか？'))
                 this.todos.splice(index, 1);
+            },
+            purge: function() {
+                if (!confirm('完了済タスクを削除しますか？')){
+                    return;
+                }
+                this.todos=this.countedTask;
             }
         },
         //タスクのカウント
         computed: {
             countedTask: function() {
-                var items = this.todos.filter(function(todo) {
+                return this.todos.filter(function(todo) {
                         return !todo.isDone;
                 });
-                return items.length;
             }
         }
     });
