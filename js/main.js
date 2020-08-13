@@ -54,16 +54,24 @@
 
     //カウントボタンコンポーネント
     var likeComponent = Vue.extend({
+        props: {
+            message: {
+                type: String,
+                defauld: 'like'
+            }
+        },
         data:
             function() {
                 return{
                     count: 0
                 }
             },
-        template: '<button @click="countUp">like{{ count }}</button>',
+        template: '<button @click="countUp">{{ message }}{{ count }}</button>',
         methods: {
             countUp: function() {
                 this.count++;
+                //emitで親コンポーネントを発火
+                this.$emit('increment');
             }
         }
     });
@@ -71,6 +79,14 @@
         el: '#app2',
         components: {
             'like-component': likeComponent
+        },
+        data: {
+            total: 0
+        },
+        methods: {
+            incrementTotal: function() {
+               this.total++; 
+            }
         }
     });
 })();
