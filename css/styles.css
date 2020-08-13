@@ -47,3 +47,9 @@ body {
 #app button {
     float: right;
 }
+
+#app2 h2 {
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    padding: 16px 0;
+}
